@@ -1,0 +1,11 @@
+language: generic
+
+sudo: required
+services:
+  - docker
+
+before_install:
+  - docker build -t dsugawara/docker-react -f Dockerfile.dev .
+
+script:
+  - docker run -e CI=true dsugawara/docker-react npm run test
